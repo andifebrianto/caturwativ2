@@ -10,7 +10,7 @@
                 
             <div class="col-md-12">
                 <div class="page-header clearfix">
-                    <h6 style="text-align: right;" class="pull-left">TOTAL BUKU : {{ $books->total() }}
+                    {{-- <h6 style="text-align: right;" class="pull-left">TOTAL BUKU : {{ $books->total() }} --}}
                     {{-- <br>TOTAL JUDUL : ..</h6> --}}
                     <h4 style="text-align: center;"><strong>{{ $header }}</strong></h4>
                 </div>
@@ -31,10 +31,10 @@
                         <tbody>
                             @foreach ($books as $book)   
                             <tr>
-                                <td>{{ $books->count() * ($books->currentPage() - 1) + $loop->iteration }}</td>
+                                <td>{{ ++$i }}</td>
                                 <td><a href="/books?kategori={{ $book->kategori }}">{{ $book->kategori }}</a></td>
-                                <td>{{ $book->judul }}</td>
-                                <td>{{ $book->penulis }}</td>
+                                <td>{!! $book->judul !!}</td>
+                                <td>{!! $book->penulis !!}</td>
                                 <td>{{ $book->penerbit }}</td>
                                 <td>{{ $book->tahun }}</td>
                                 <td>{{ $book->jumlah }}</td>

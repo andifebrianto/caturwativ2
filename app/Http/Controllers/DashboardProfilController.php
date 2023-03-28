@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Profil;
-use App\Http\Requests\StoreProfilRequest;
-use App\Http\Requests\UpdateProfilRequest;
+use Illuminate\Http\Request;
 
-class ProfilController extends Controller
+class DashboardProfilController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +31,10 @@ class ProfilController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreProfilRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreProfilRequest $request)
+    public function store(Request $request)
     {
         //
     }
@@ -58,19 +58,36 @@ class ProfilController extends Controller
      */
     public function edit(Profil $profil)
     {
-        //
+        return view('dashboard.profil.edit',[
+            'title' => 'Dashboard | Ubah Profil',
+            'profil' => Profil::all(),
+            'categories' => Category::all()
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateProfilRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Profil  $profil
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateProfilRequest $request, Profil $profil)
+    public function update(Request $request, Profil $profil)
     {
-        //
+        $validatedData = $request->validate([
+            'alamat' => 'required|max:255',
+            'telepon' => 'required',
+            'email' => 'required|email',
+            'deskripsi' => 'required',
+            'twitter' => 'required',
+            'facebook' => 'required',
+            'instagram' => 'required'
+        ]);
+
+        Profil::where('id', $profil->id)
+            ->update($validatedData);
+
+        return redirect('/dashboard')->with('success', 'Profil berhasil diupdate!');
     }
 
     /**

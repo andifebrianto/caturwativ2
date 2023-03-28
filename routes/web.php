@@ -7,6 +7,9 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DashboardBookController;
+use App\Http\Controllers\DashboardProfilController;
+use App\Http\Controllers\DashboardCategoryController;
 
 
 /*
@@ -35,3 +38,7 @@ Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
+
+Route::resource('/dashboard/books', DashboardBookController::class)->middleware('auth');
+Route::resource('/dashboard/categories', DashboardCategoryController::class)->middleware('auth');
+Route::resource('/dashboard/profil', DashboardProfilController::class)->middleware('auth');
