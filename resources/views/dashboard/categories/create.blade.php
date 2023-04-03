@@ -1,4 +1,4 @@
-@extends('dashboard.layouts.main')
+@extends('layouts.main')
 
 @section('container')
     <div class="container-fluid col-lg-9 mb-3">
@@ -30,7 +30,7 @@
                                             <div class="mb-3 form-floating">
                                                 <input class="form-control @error('cover') is-invalid @enderror"
                                                     type="file" id="cover" name="cover" onchange="previewImage()">
-                                                <label for="cover"><strong>IMAGE</strong> (max: 2MB)</label>
+                                                <label for="cover"><strong>IMAGE</strong> (max: 10MB)</label>
                                                 <img class="img-preview img-fluid col-sm-5" id="frame">
                                                 @error('cover')
                                                     <div class="invalid-feedback">{{ $message }}</div>
@@ -39,7 +39,7 @@
 
 
                                             <button type="submit" class="btn btn-primary my-3">SIMPAN</button>
-                                            <a href="/dashboard/categories" class="btn btn-default">KEMBALI</a>
+                                            <a href="/categories" class="btn btn-default">KEMBALI</a>
                                         </form>
                                     </div>
                                 </div>

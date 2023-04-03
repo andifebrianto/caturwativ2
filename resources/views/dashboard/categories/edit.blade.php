@@ -1,4 +1,4 @@
-@extends('dashboard.layouts.main')
+@extends('layouts.main')
 
 @section('container')
     <div class="container-fluid col-lg-9 mb-3">
@@ -46,7 +46,7 @@
 
                                             <button type="submit" class="btn btn-primary my-3">UBAH</button>
                                             {{-- <input type="submit" class="btn btn-primary" value="Simpan"> --}}
-                                            <a href="/dashboard/categories" class="btn btn-default">KEMBALI</a>
+                                            <a href="/categories" class="btn btn-default">KEMBALI</a>
                                         </form>
                                     </div>
                                 </div>

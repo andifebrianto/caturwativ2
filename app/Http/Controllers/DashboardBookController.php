@@ -67,7 +67,7 @@ class DashboardBookController extends Controller
         ]);
 
         Book::create($validatedData);
-        return redirect('/dashboard/books')->with('success', 'Buku berhasil ditambahkan!');
+        return redirect('/books')->with('success', 'Buku berhasil ditambahkan!');
     }
 
     /**
@@ -118,7 +118,7 @@ class DashboardBookController extends Controller
         Book::where('id', $book->id)
             ->update($validatedData);
 
-        return redirect('/dashboard/books')->with('success', 'Data Buku berhasil diupdate!');
+        return redirect('/books')->with('success', 'Data Buku berhasil diupdate!');
     }
 
     /**
@@ -130,6 +130,6 @@ class DashboardBookController extends Controller
     public function destroy(Book $book)
     {
         Book::destroy($book->id);
-        return redirect('/dashboard/books')->with('success', 'Buku berhasil dihapus!');
+        return redirect('/books')->with('success', 'Buku berhasil dihapus!');
     }
 }

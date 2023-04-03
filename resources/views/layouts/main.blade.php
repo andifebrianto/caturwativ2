@@ -53,7 +53,7 @@
         </div>
         <div class="row align-items-center bg-white py-3 px-lg-5">
             <div class="col-lg-4">
-                <a href="index.php" class="navbar-brand p-0 d-none d-lg-block">
+                <a href="/" class="navbar-brand p-0 d-none d-lg-block">
                     <h1 class="m-0 display-4 text-uppercase text-primary">Caturwati<span class="text-secondary font-weight-normal">Library</span></h1>
                 </a>
             </div>
@@ -68,57 +68,17 @@
 
 
     <!-- Footer Start -->
-    <div class="container-fluid bg-dark pt-5 px-sm-3 px-md-2 mt-0">
-        <div class="row py-2">
-            <div class="col-lg-3 col-md-6 mb-5">
-                <div class="mb-3">
-                    <div class="mb-2">
-                    </div>
-                </div>
-                <div class="mb-3">
-
-                    <div class="mb-2">
-                    </div>
-                </div>
-                <div class="">
-                    <div class="mb-2">
-
-                    </div>                
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6 mb-5">
-                <h5 class="mb-4 text-white text-uppercase font-weight-bold text-center">Caturwati Library</h5>
-                <p class="font-weight-medium text-center"><i class="fa fa-map-marker-alt mr-2"></i>{{ $profil[0]->alamat }}</p>
-                <p class="font-weight-medium text-center"><i class="fa fa-phone-alt mr-2"></i>{{ $profil[0]->telepon }}</p>
-                <p class="font-weight-medium text-center"><i class="fa fa-envelope mr-2"></i>{{ $profil[0]->email }}</p>
-                <div class="col card-header text-center">
-                    <a href="{{ $profil[0]->twitter }}" class="btn btn-lg btn-secondary btn-lg-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="{{ $profil[0]->facebook }}" class="btn btn-lg btn-secondary btn-lg-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="{{ $profil[0]->instagram }}" class="btn btn-lg btn-secondary btn-lg-square mr-2" href="#"><i class="fab fa-instagram"></i></a>
-                    
-                </div>
-            </div>
-            
-            <div class="col-lg-4 col-md-6 mb-5">
-                <h5 class="mb-4 text-white text-uppercase font-weight-bold text-center">Categories</h5>
-                <div class="m-n1">
-                    <div class="col card-header text-center">
-                        {{-- @for ($i = 0; $i < 20; $i++)  --}}
-                        @foreach ($categories as $cat)
-                            <a href="/books?kategori={{ $cat->name }}" class="btn btn-sm btn-secondary m-1">{{ $cat->name }}</a>
-                        @endforeach
-                        {{-- @endfor --}}
-                   </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
 
     <!-- Footer End -->
-    <div class="container-fluid py-4 px-sm-3 px-md-5" style="background: #111111;">
-        <p class="m-0 text-center"><a href="#">Caturwati Library</a> &copy; 2023 All Rights Reserved.</a></p>
+    <div class="container-fluid py-3 px-sm-3 px-lg-3 " style="background: #1E2024;">
+
+        <p class="m-0">
+        <!-- <left><a href="" class="btn btn-lg btn-secondary btn-lg-square mr-2 bg-none" href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="" class="btn btn-lg btn-secondary btn-lg-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="" class="btn btn-lg btn-secondary btn-lg-square mr-2" href="#"><i class="fab fa-instagram"></i></a></left> -->
+    
+    <center> <a href="#" >Caturwati Library</a> &copy; 2023 All Rights Reserved.</a></p></center>
     </div>
     <!-- Footer End -->
 

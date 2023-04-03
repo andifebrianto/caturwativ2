@@ -51,7 +51,7 @@ class DashboardCategoryController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|max:255|unique:categories',
-            'cover' => 'image|file|max:2024'
+            'cover' => 'image|file|max:10240'
         ]);
 
         if ($request->file('cover')) {
@@ -60,7 +60,7 @@ class DashboardCategoryController extends Controller
 
         Category::create($validatedData);
 
-        return redirect('/dashboard/categories')->with('success', 'Kategori berhasil ditambahkan!');
+        return redirect('/categories')->with('success', 'Kategori berhasil ditambahkan!');
     }
 
     /**
@@ -115,7 +115,7 @@ class DashboardCategoryController extends Controller
         Category::where('id', $category->id)
             ->update($validatedData);
 
-        return redirect('/dashboard/categories')->with('success', 'Kategori berhasil diubah!');
+        return redirect('/categories')->with('success', 'Kategori berhasil diubah!');
     }
 
     /**
@@ -130,6 +130,6 @@ class DashboardCategoryController extends Controller
             Storage::delete($category->cover);
         }
         Category::destroy($category->id);
-        return redirect('/dashboard/categories')->with('success', 'Kategori berhasil dihapus!');
+        return redirect('/categories')->with('success', 'Kategori berhasil dihapus!');
     }
 }

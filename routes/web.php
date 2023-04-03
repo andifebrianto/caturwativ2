@@ -4,13 +4,15 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardBookController;
 use App\Http\Controllers\DashboardProfilController;
 use App\Http\Controllers\DashboardCategoryController;
-
+use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\CaroselController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,8 +29,8 @@ use App\Http\Controllers\DashboardCategoryController;
 //     return view('welcome');
 // });
 
-Route::get('/', [HomeController::class, 'index']);
-Route::get('/home', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->middleware('auth');
+Route::get('/home', [HomeController::class, 'index'])->middleware('auth');
 Route::get('/categories', [CategoryController::class, 'index']);
 Route::get('books', [BookController::class, 'index']);
 Route::get('/about', [AboutController::class, 'index']);
@@ -42,3 +44,8 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('aut
 Route::resource('/dashboard/books', DashboardBookController::class)->middleware('auth');
 Route::resource('/dashboard/categories', DashboardCategoryController::class)->middleware('auth');
 Route::resource('/dashboard/profil', DashboardProfilController::class)->middleware('auth');
+
+Route::resource('/gallery', GalleryController::class);
+Route::resource('/carosel', CaroselController::class)->middleware('auth');
+
+Route::get('/blog', [BlogController::class, 'index']);

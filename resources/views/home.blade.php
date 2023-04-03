@@ -1,26 +1,25 @@
 @extends('layouts.main')
 
 @section('container')
-    {{-- @dd($categories) --}}
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-7 px-0">
                 <div class="owl-carousel main-carousel position-relative">
                     <div class="position-relative overflow-hidden" style="height: 500px;">
-                        <img class="img-fluid h-100" src="img/gambar1.jpg" style="object-fit: cover;">
+                        <img class="img-fluid h-100" src="{{ asset('storage/' . $carosel->cover1) }}" style="object-fit: cover;">
                         <div class="overlay">
                             <!-- <div class="mb-2">
                                 </div> -->
                         </div>
                     </div>
                     <div class="position-relative overflow-hidden" style="height: 500px;">
-                        <img class="img-fluid h-100" src="img/gambar2.jpg" style="object-fit: cover;">
+                        <img class="img-fluid h-100" src="{{ asset('storage/' . $carosel->cover2) }}" style="object-fit: cover;">
                         <div class="overlay">
                             <!-- <a class="h2 m-0 text-white text-uppercase font-weight-bold" href="admin.php"></a> -->
                         </div>
                     </div>
                     <div class="position-relative overflow-hidden" style="height: 500px;">
-                        <img class="img-fluid h-100" src="img/gambar3.jpg" style="object-fit: cover;">
+                        <img class="img-fluid h-100" src="{{ asset('storage/' . $carosel->cover3) }}" style="object-fit: cover;">
                         <div class="overlay">
                             <div class="mb-2">
                                 <!-- <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
@@ -42,7 +41,7 @@
                                     <img class="img-preview img-fluid w-100 h-100" src="{{ asset('storage/' . $cat->cover) }}" style="object-fit: cover;"
                                         id="frame">
                                 @else
-                                    <img class="img-fluid w-100 h-100" src="img/buku1.jpg" style="object-fit: cover;">
+                                    <img class="img-fluid w-100 h-100" src="img/gambar1.jpg" style="object-fit: cover;">
                                 @endif
                                 <div class="overlay">
                                     <div class="mb-2">

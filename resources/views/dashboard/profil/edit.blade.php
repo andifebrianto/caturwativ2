@@ -1,4 +1,4 @@
-@extends('dashboard.layouts.main')
+@extends('layouts.main')
 
 @section('container')
 
@@ -25,31 +25,7 @@
                                             @error('deskripsi')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
-                                        </div>
-                                        
-                                        <div class="form-floating mb-3">
-                                            <textarea name="alamat" class="form-control @error('alamat') is-invalid @enderror" placeholder="Masukkan alamat" required id="floatingTextarea" style="height: 100px">{{ old('alamat', $profil[0]->alamat) }}</textarea>
-                                            <label for="floatingTextarea1"><strong>Alamat</strong> (Max 255 karakter)</label>
-                                            @error('alamat')
-                                                <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                        <div class="form-floating mb-3">
-                                            <input type="email" name="email" class="form-control @error('email') is-invalid @enderror rounded-top" placeholder="Masukkan email" autofocus id="email" value="{{ old('email', $profil[0]->email) }}" required>
-                                            <label for="email"><strong>Email</strong></label>
-                                            @error('email')
-                                                <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                        <div class="form-floating mb-3">
-                                            <input type="text" name="telepon" class="form-control @error('telepon') is-invalid @enderror" placeholder="Masukkan telepon" autofocus id="telepon" value="{{ old('telepon', $profil[0]->telepon) }}" required>
-                                            <label for="telepon"><strong>Telepon</strong></label>
-                                            @error('telepon')
-                                                <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                        
-                                        
+                                        </div>                                       
                                         <div class="form-floating mb-3">
                                             <input type="text" name="twitter" class="form-control @error('twitter') is-invalid @enderror" placeholder="Masukkan twitter" autofocus id="twitter" value="{{ old('twitter', $profil[0]->twitter) }}" required>
                                             <label for="twitter"><strong>Twitter</strong></label>

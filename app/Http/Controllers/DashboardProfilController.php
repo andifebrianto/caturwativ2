@@ -75,9 +75,6 @@ class DashboardProfilController extends Controller
     public function update(Request $request, Profil $profil)
     {
         $validatedData = $request->validate([
-            'alamat' => 'required|max:255',
-            'telepon' => 'required',
-            'email' => 'required|email',
             'deskripsi' => 'required',
             'twitter' => 'required',
             'facebook' => 'required',

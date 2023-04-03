@@ -1,4 +1,4 @@
-@extends('dashboard.layouts.main')
+@extends('layouts.main')
 
 @section('container')
 
@@ -76,7 +76,7 @@
                                         </div>
                                         <button type="submit" class="btn btn-primary my-3">UPDATE BUKU</button>
                                         {{-- <input type="submit" class="btn btn-primary" value="Simpan"> --}}
-                                        <a href="" class="btn btn-default">BATAL</a>
+                                        <a href="/books" class="btn btn-default">BATAL</a>
                                     </form>
                                 </div>
                             </div>

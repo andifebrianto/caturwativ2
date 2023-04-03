@@ -3,12 +3,12 @@
 @section('container')
 
 
-        <div class="container-fluid col-lg-6 mb-3">
-            <div class="container py-5 col-8 mb-3">
-                <div class="section-title col-md-12">
-                    <div class="col-12">
+        <div class="container-fluid col-lg-6 mb-3" >
+            <div class="container py-5 col-8 mb-3" >
+                <div class="section-title col-md-12" >
+                    <div class="col-12" >
                         <div class="page-header clearfix">
-                            <div class="input-group mb-3" style="width: 100%;">
+                            <div class="input-group mb-3" style="width: 100%;" >
 
                                 @if (session()->has('success'))
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">
