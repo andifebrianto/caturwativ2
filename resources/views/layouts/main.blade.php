@@ -26,6 +26,8 @@
     {{-- css lokal --}}
     <link href="{{ URL::asset('/') }}css/style.css" rel="stylesheet">
 
+    {{-- jquery online --}}
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
 
 </head>
 <body>
@@ -68,17 +70,12 @@
 
 
     <!-- Footer Start -->
-
-
-    <!-- Footer End -->
-    <div class="container-fluid py-3 px-sm-3 px-lg-3 " style="background: #1E2024;">
-
-        <p class="m-0">
-        <!-- <left><a href="" class="btn btn-lg btn-secondary btn-lg-square mr-2 bg-none" href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="" class="btn btn-lg btn-secondary btn-lg-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="" class="btn btn-lg btn-secondary btn-lg-square mr-2" href="#"><i class="fab fa-instagram"></i></a></left> -->
+    {{-- <div class="footerlast">
+        <a href="#" >Caturwati Library</a> &copy; 2023 All Rights Reserved.</a></p>
+    </div> --}}
     
-    <center> <a href="#" >Caturwati Library</a> &copy; 2023 All Rights Reserved.</a></p></center>
+    <div class="container-fluid py-3 px-sm-3 px-lg-3 " style="background: #1E2024;">
+    <center> <a href="#" >Caturwati Library</a> &copy; 2023 All Rights Reserved.</a></center>
     </div>
     <!-- Footer End -->
 
