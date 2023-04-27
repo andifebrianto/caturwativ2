@@ -5,14 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Gallery extends Model
+class GalleryThumbnail extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
-    protected $with = ['thumbnails'];
 
-    public function thumbnails()
+    public function galleries()
     {
-        return $this->belongsTo(GalleryThumbnail::class, 'thumbnail_id');
+        return $this->hasOne(Gallery::class);
     }
 }

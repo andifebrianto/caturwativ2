@@ -1,4 +1,4 @@
-<div class="container-fluid p-0 sticky-top border-bottom" style="border-bottom:red;">
+<div class="container-fluid p-0 sticky-top border-bottom border-top" style="border-bottom:red;">
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-2 py-lg-0 px-lg-0">
         <a href="index.php" class="navbar-brand d-block d-lg-none">
             <h1 class="m-0 display-4 text-uppercase text-primary">Caturwati<span
@@ -10,10 +10,10 @@
         <div class="collapse navbar-collapse justify-content-between px-0 px-lg-3 " id="navbarCollapse">
             <div class="navbar-nav mr-auto py-0 ">
                 <a href="/" class="nav-item nav-link {{ $title === 'Home' ? 'active' : '' }}">Home</a>
-                <a href="/categories"
-                    class="nav-item nav-link {{ Request::path() === 'categories' ? 'active' : '' }}">Categories</a>
                 <a href="/gallery"
                     class="nav-item nav-link {{ Request::path() === 'gallery' ? 'active' : '' }}">Gallery</a>
+                <a href="/categories"
+                    class="nav-item nav-link {{ Request::path() === 'categories' ? 'active' : '' }}">Categories</a>
 
 
                 @auth
@@ -44,7 +44,7 @@
                     <form action="/logout" method="post">
                         @csrf
                         <button type="submit" class="nav-item nav-link px-3 text-left bg-dark"
-                            style="color:red;">Logout</button>
+                            style="color:red; border: none;">Logout</button>
                     </form>
                 </div>
             @else
@@ -55,6 +55,5 @@
             @endauth
 
         </div>
-</div>
-</nav>
+    </nav>
 </div>

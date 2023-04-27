@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Profil;
 use App\Models\Carosel;
 use Illuminate\Http\Request;
+use App\Models\CaroselThumbnail;
 
 class HomeController extends Controller
 {
@@ -16,7 +17,8 @@ class HomeController extends Controller
             'profil' => Profil::all(),
             'categories' => Category::all(),
             'category_4' => Category::latest()->limit(4)->get(),
-            'carosel' => Carosel::first()
+            'carosel' => Carosel::first(),
+            'carosel_thumbs' => CaroselThumbnail::latest()->limit(4)->get()
         ]);
     }
 }

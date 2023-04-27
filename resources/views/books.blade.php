@@ -26,11 +26,11 @@
         </div>
     @endif
 
-    <div class="container-fluid py-0 pt-0 mb-3" id="container">
+    <div class="container-fluid py-0 pt-0 mb-5" id="container">
         <div class="container py-0">
             <div class="section-title">
                 @if ($books->count() > 0)
-                    <div class="col-md-12">
+                    <div class="col-md-12 mb-5">
                         <div class="page-header clearfix">
                             {{-- <h6 style="text-align: right;" class="pull-left">TOTAL BUKU : {{ $books->total() }} --}}
                             {{-- <br>TOTAL JUDUL : ..</h6> --}}

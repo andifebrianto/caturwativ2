@@ -13,6 +13,8 @@ use App\Http\Controllers\DashboardProfilController;
 use App\Http\Controllers\DashboardCategoryController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\CaroselController;
+use App\Http\Controllers\CropGalleryController;
+use App\Http\Controllers\CropImageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,8 +31,8 @@ use App\Http\Controllers\CaroselController;
 //     return view('welcome');
 // });
 
-Route::get('/', [HomeController::class, 'index'])->middleware('auth');
-Route::get('/home', [HomeController::class, 'index'])->middleware('auth');
+Route::get('/', [HomeController::class, 'index']);
+Route::get('/home', [HomeController::class, 'index']);
 Route::get('/categories', [CategoryController::class, 'index']);
 Route::get('books', [BookController::class, 'index']);
 Route::get('/about', [AboutController::class, 'index']);
@@ -46,6 +48,13 @@ Route::resource('/dashboard/categories', DashboardCategoryController::class)->mi
 Route::resource('/dashboard/profil', DashboardProfilController::class)->middleware('auth');
 
 Route::resource('/gallery', GalleryController::class);
+
 Route::resource('/carosel', CaroselController::class)->middleware('auth');
 
 Route::get('/blog', [BlogController::class, 'index']);
+
+Route::get('crop-image-upload', [CropImageController::class, 'index'])->middleware('auth');
+Route::post('crop-image-upload', [CropImageController::class, 'uploadCropImage'])->middleware('auth');
+
+Route::get('tambah-gambar', [CropGalleryController::class, 'index'])->middleware('auth');
+Route::post('tambah-gambar', [CropGalleryController::class, 'uploadCropGallery'])->middleware('auth');

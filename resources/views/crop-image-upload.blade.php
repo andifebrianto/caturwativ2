@@ -5,20 +5,29 @@
         <div class="section-title">
             <div class="col-md-12 text-center mb-5">
                 <div class="page-header">
-                    <h2>TAMBAH GAMBAR</h2>
+                    <h2>UBAH CAROSEL</h2>
                 </div>
-                <p>Silahkan pilih gambar untuk menambahkan ke Gallery</p>
+                <p>Silahkan unggah gambar untuk memperbarui Carosel</p>
 
-                <form action="/gallery" method="post" enctype="multipart/form-data">
-                    @csrf
-                    <div class="mb-3 form-floating">
-                        <input type="file" name="image" class="image form-control" id="cover1"
-                            onchange="previewImage1()">
-                        <label for="cover1"><strong>IMAGE</strong> (max: 20MB)</label>
-                    </div>
+                <div class="mb-3 form-floating">
+                    <input type="file" name="image" class="image form-control" id="cover1" onchange="previewImage1()">
+                    <label for="cover1"><strong>IMAGE</strong> (max: 20MB)</label>
+                </div>
 
-                    <hr>
-                    <a href="/gallery" class="btn btn-primary font-weight-bold mb-3">Kembali ke Gallery</a>
+                <hr>
+                @if ($carosels != null)
+                    @foreach ($carosels as $carosel)
+                        <img class="img-preview img-fluid col-sm-5 mb-1 border"
+                            src="{{ asset('carosel_thumbnails/' . $carosel->name) }}">
+                    @endforeach
+                    {{-- <input type="hidden" id="old_image" value="{{ $carosel->name }}">
+                <input type="hidden" id="old_image_id" value="{{ $carosel->id }}"> --}}
+                @else
+                    <p>Silahkan unggah gambar untuk mengubah Carosel</p>
+                @endif
+
+                <hr>
+                <a href="/dashboard" class="btn btn-secondary font-weight-bold mb-3">Back to Dashboard</a>
             </div>
         </div>
     </div>
@@ -28,7 +37,7 @@
         <div class="modal-dialog modal-lg-crop modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalLabel">Silahkan potong gambar untuk thumbnail
+                    <h5 class="modal-title" id="modalLabel">Silahkan sesuaikan gambar carosel.
                     </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -45,16 +54,16 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                    <button type="button" class="btn btn-primary" id="crop">Potong dan Simpan</button>
-                    </form>
-
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="crop">Crop</button>
                 </div>
             </div>
         </div>
     </div>
     <script>
         function previewImage1() {
+            // var oldImage = $('#old_image').val();
+            // var oldImageID = $('#old_image_id').val();
             var $modal = $('#modal');
             var image = document.getElementById('image');
             var cropper;
@@ -111,12 +120,14 @@
                             data: {
                                 '_token': $('meta[name="_token"]').attr('content'),
                                 'image': base64data
+                                // 'old_image': oldImage,
+                                // 'old_image_id': oldImageID
                             },
                             success: function(data) {
                                 console.log(data);
                                 $modal.modal('hide');
-                                // alert("Crop image successfully uploaded");
-                                // window.location.reload();
+                                alert("Crop image successfully uploaded");
+                                window.location.reload();
                             },
                             error: (error) => {
                                 console.log(JSON.stringify(error));

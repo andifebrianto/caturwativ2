@@ -10,9 +10,19 @@ use Illuminate\Support\Facades\Storage;
 
 class CaroselController extends Controller
 {
+    public function show(Carosel $carosel)
+    {
+        return view('carosel.show',[
+            'title' => 'Carosel | Show',
+            'profil' => Profil::all(),
+            'categories' => Category::all(),
+            'carosel' => $carosel
+        ]);
+    }
+
     public function edit(Carosel $carosel){
-        return view('carosel',[
-            'title' => 'Carosel',
+        return view('carosel.edit',[
+            'title' => 'Carosel | Edit',
             'profil' => Profil::all(),
             'categories' => Category::all(),
             'carosel' => $carosel
@@ -49,6 +59,6 @@ class CaroselController extends Controller
         Carosel::where('id', $carosel->id)
             ->update($validatedData);
 
-        return redirect('/dashboard')->with('success', 'Carosel berhasil diubah!');
+        return redirect('/home')->with('success', 'Carosel berhasil diubah!');
     }
 }

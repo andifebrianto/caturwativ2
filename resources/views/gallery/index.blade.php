@@ -11,7 +11,11 @@
                             class="text-white font-weight-normal text-capitalize">Gallery</span></h1>
                     @auth
                         <p>
-                            <a href="/gallery/create" class="btn btn-primary font-weight-bold mb-3">Tambah Gambar</a>
+                            <a href="tambah-gambar" class="btn btn-primary font-weight-bold mb-3">Tambah Gambar</a>
+
+                            {{-- <button type="button" class="btn btn-primary font-weight-bold mb-3" data-bs-toggle="modal"
+                                data-bs-target="#tambahModal">Tambah Gambar
+                            </button> --}}
                         </p>
 
                     @endauth
@@ -19,18 +23,48 @@
             </div>
         </section>
 
+        {{-- Modal add image --}}
+        <div class="modal fade" id="tambahModal" tabindex="-1" aria-labelledby="tambahModal" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5">Tambah Gambar</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{ route('gallery.store') }}" method="post" enctype="multipart/form-data">
+                            @csrf
+                            <div class="mb-3 form-floating">
+                                <input class="form-control @error('image') is-invalid @enderror" type="file"
+                                    id="image" name="image" onchange="previewImage()">
+                                <label for="image"><strong>IMAGE</strong> (max: 20MB)</label>
+                                <img class="img-fluid" id="frame">
+                                @error('image')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">SAVE</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{-- Alert --}}
         @if (session()->has('success'))
             <div class="container col-md-8 d-flex justify-content-center">
                 <div class="alert alert-success" role="alert">
                     {{ session('success') }}
                 </div>
-
             </div>
         @endif
 
         @if ($galleries->count() > 0)
-            <div class="album py-3">
-                <div class="container">
+            <div class="album py-3 mb-5">
+                <div class="container mb-5">
 
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                         @foreach ($galleries as $gallery)
@@ -41,7 +75,7 @@
                                     </a> --}}
                                     <button type="button" class="btn" data-bs-toggle="modal"
                                         data-bs-target="#gambarModal{{ $gallery->id }}">
-                                        <img src="{{ asset('storage/' . $gallery->image) }}"
+                                        <img src="{{ asset('gallery_thumbnails/' . $gallery->thumbnails->name) }}"
                                             class="bd-placeholder-img card-img-top" width="100%" height="225">
                                     </button>
 
@@ -86,9 +120,10 @@
         @endif
 
         @foreach ($galleries as $gallery)
+            {{-- Modal Show Image --}}
             <div class="modal fade" id="gambarModal{{ $gallery->id }}" tabindex="-1"
                 aria-labelledby="gambarModalLabel{{ $gallery->id }}" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
                     <div class="modal-content">
                         {{-- <div class="modal-header">
                             <h1 class="modal-title fs-5" id="gambarModalLabel{{ $gallery->id }}">Judul Gambar
@@ -103,16 +138,17 @@
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
                             @auth
-                            <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                data-bs-target="#deleteModal{{ $gallery->id }}">
-                                Delete
-                            </button>
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                    data-bs-target="#deleteModal{{ $gallery->id }}">
+                                    Delete
+                                </button>
                             @endauth
                         </div>
                     </div>
                 </div>
             </div>
 
+            {{-- Modal Delete Confirmation --}}
             <div class="modal fade" id="deleteModal{{ $gallery->id }}" tabindex="-1"
                 aria-labelledby="deleteModalLabel{{ $gallery->id }}" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-sm">
@@ -139,5 +175,11 @@
         @endforeach
 
     </main>
+
+    <script>
+        function previewImage() {
+            frame.src = URL.createObjectURL(event.target.files[0]);
+        }
+    </script>
 
 @endsection

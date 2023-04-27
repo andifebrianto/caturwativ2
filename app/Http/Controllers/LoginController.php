@@ -27,7 +27,7 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/books');
+            return redirect()->intended('/home');
         }
 
         return back()->with('loginError', 'Login Gagal, Silahkan COba Lagi!');

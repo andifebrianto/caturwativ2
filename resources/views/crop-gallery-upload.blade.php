@@ -15,10 +15,22 @@
                         <input type="file" name="image" class="image form-control" id="cover1"
                             onchange="previewImage1()">
                         <label for="cover1"><strong>IMAGE</strong> (max: 20MB)</label>
+                        <img class="img-preview img-fluid col-xl-5" id="frame">
                     </div>
 
+                    {{-- Alert --}}
+                    @if (session()->has('success'))
+                        <div class="container col-md-8 d-flex justify-content-center">
+                            <div class="alert alert-success" role="alert">
+                                {{ session('success') }}
+                            </div>
+                        </div>
+                    @endif
+
                     <hr>
-                    <a href="/gallery" class="btn btn-primary font-weight-bold mb-3">Kembali ke Gallery</a>
+                    <a href="/gallery" class="btn btn-secondary font-weight-bold mb-3">Back</a>
+                    <button type="submit" class="btn btn-primary font-weight-bold mb-3">SAVE</button>
+                </form>
             </div>
         </div>
     </div>
@@ -45,16 +57,15 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                    <button type="button" class="btn btn-primary" id="crop">Potong dan Simpan</button>
-                    </form>
-
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="crop">CROP</button>
                 </div>
             </div>
         </div>
     </div>
     <script>
         function previewImage1() {
+            frame.src = URL.createObjectURL(event.target.files[0]);
             var $modal = $('#modal');
             var image = document.getElementById('image');
             var cropper;
@@ -107,7 +118,7 @@
                         $.ajax({
                             type: "POST",
                             dataType: "json",
-                            url: "crop-image-upload",
+                            url: "tambah-gambar",
                             data: {
                                 '_token': $('meta[name="_token"]').attr('content'),
                                 'image': base64data
@@ -115,7 +126,7 @@
                             success: function(data) {
                                 console.log(data);
                                 $modal.modal('hide');
-                                // alert("Crop image successfully uploaded");
+                                // alert("Gambar berhasil diunggah");
                                 // window.location.reload();
                             },
                             error: (error) => {

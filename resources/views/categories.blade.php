@@ -68,8 +68,8 @@
         @endif
 
         @if ($categories->count() > 0)
-            <div class="album py-3">
-                <div class="container">
+            <div class="album py-3 mb-5">
+                <div class="container mb-5">
 
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                         @foreach ($categories as $category)
